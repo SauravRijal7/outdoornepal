@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './styles.css';
 import backImg from './images/back.jpg';
 import cardImg from './images/card.jpg';
 import digitalPrintingImg from './images/digital-printing.jpg';
@@ -92,6 +96,64 @@ export default function OutdoorNepal() {
     { icon: instagramImg, isImg: true, link: 'https://www.instagram.com/bharat_outdoor/' },
     { icon: whatsappImg, isImg: true, link: 'https://wa.me/9779841503408' },
   ];
+  
+const NextArrow = ({ onClick }) => (
+  <div
+    onClick={onClick}
+    style={{
+      position: "absolute",
+      top: "50%",
+      right: "-25px",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
+      zIndex: 2,
+      fontSize: "30px",
+      color: "#333",
+      background: "rgba(255,255,255,0.6)",
+      padding: "10px",
+      borderRadius: "50px",
+      backdropFilter: "blur(10px)",
+    }}
+  >
+    ❯
+  </div>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    onClick={onClick}
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "-25px",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
+      zIndex: 2,
+      fontSize: "30px",
+      color: "#333",
+      background: "rgba(255,255,255,0.6)",
+      padding: "10px",
+      borderRadius: "50px",
+      backdropFilter: "blur(10px)",
+    }}
+  >
+    ❮
+  </div>
+);
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  autoplay: false,
+  autoplaySpeed: 2000,
+  speed: 600,
+  slidesToShow: isMobile ? 1 : 3,
+  slidesToScroll: 1,
+  arrows: !isMobile,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  centerMode: false,
+  centerPadding: "0px",
+};
 
   const icons = [
     <img 
@@ -110,14 +172,6 @@ export default function OutdoorNepal() {
       style={{ width: "140px", height: "140px", objectFit: "contain" }}
     />
   ];
-
-  const stats = [
-    { number: '18+', label: 'Years', icon: '⏱️' },
-    { number: '2000+', label: 'Projects', icon: '🎨' },
-    { number: '500+', label: 'Clients', icon: '🤝' },
-    { number: '100%', label: 'Satisfaction', icon: '⭐' }
-  ];
-
   return (
     <div style={{ 
       margin: 0, 
@@ -306,11 +360,11 @@ export default function OutdoorNepal() {
 
       {/* Hero Section */}
       <section id="hero" style={{
-        minHeight: '100vh',
+        minHeight: '50vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: isMobile ? '80px' : '80px',
-        paddingBottom: isMobile ? '2rem' : '0',
+        paddingTop: isMobile ? '40px' : '80px',
+        paddingBottom: isMobile ? '1rem' : '0',
         background: 'linear-gradient(135deg, #0A1A2F, #23272A)',
         position: 'relative',
         overflow: 'hidden'
@@ -471,98 +525,308 @@ export default function OutdoorNepal() {
       </section>
 
       {/* Services Section */}
-      <section id="services" style={{ 
-        padding: isMobile ? '4rem 1.5rem' : '6rem 2rem', 
-        background: 'linear-gradient(135deg, #0A1A2F, #23272A)' 
-      }}>
-        <div style={{ maxWidth: '1300px', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{
-            fontSize: isMobile ? '1.5rem' : '2rem',
-            marginBottom: '1rem',
-            color: '#4ECDC4',
-          }}>
-            🚀 What We Offer
+      <section id="services" style={{ padding: "60px 0", textAlign: "center", background: 'linear-gradient(135deg, #0A1A2F, #23272A)',
+ }}>
+  <h2 style={{ fontSize: "2.2rem", fontWeight: "700", marginBottom: "30px" }}>
+    Our Services
+  </h2>
+
+  <div style={{ maxWidth: "1400px", margin: "0 auto", gap:"2px" }}>
+    <Slider {...sliderSettings}>
+      {services.map((service, index) => (
+        <div key={index} style={{ padding: "40px" }}>
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.25)",
+              backdropFilter: "blur(15px)",
+              borderRadius: "22px",
+              padding: "10px",
+              border: "1px solid rgba(255,255,255,0.3)",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+              height: "360px",
+              display: "flex",
+              gap: "15px",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              transition: "0.3s ease",
+            }}
+          >
+            <div
+              style={{
+                width: "318px",
+                height: "400px",
+                borderRadius: "20px",
+                overflow: "hidden",
+                background: service.color,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
+              }}
+            >
+              <img
+                src={service.icon}
+                alt={service.title}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            <h3
+              style={{
+                marginTop: "15px",
+                fontSize: "1.2rem",
+                fontWeight: "700",
+                color: "#333",
+                textAlign: "center",
+              }}
+            >
+              {service.title}
+            </h3>
           </div>
-          <h2 style={{
-            fontSize: isMobile ? '1.8rem' : 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: '800',
-            marginBottom: '1rem',
-            color: '#F5F7FA',
-          }}>Our Premium Services</h2>
-          <p style={{
-            fontSize: isMobile ? '1rem' : '1.1rem',
-            color: '#F5F7FA',
-            maxWidth: '600px',
-            margin: '0 auto 4rem'
-          }}>
-            Professional printing solutions tailored to your needs
-          </p>
+        </div>
+      ))}
+    </Slider>
+  </div>
+</section>
+
+             {/* Special Offers Section */}
+      <section style={{
+        padding: isMobile ? '4rem 1.5rem' : '6rem 2rem',
+        background: 'linear-gradient(135deg, #0A1A2F, #23272A)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-50px',
+          right: '-50px',
+          width: '300px',
+          height: '300px',
+          background: 'radial-gradient(circle, rgba(255, 107, 157, 0.15), transparent)',
+          borderRadius: '50%',
+          filter: 'blur(40px)'
+        }}></div>
+        
+        <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: isMobile ? '3rem' : '4rem' }}>
+            <div style={{
+              display: 'inline-block',
+              padding: '0.5rem 1.5rem',
+              background: 'rgba(255, 107, 157, 0.1)',
+              borderRadius: '50px',
+              color: '#FF6B9D',
+              fontSize: isMobile ? '0.8rem' : '0.9rem',
+              fontWeight: '600',
+              marginBottom: '1rem'
+            }}>
+              🎉 Special Offers
+            </div>
+            <h2 style={{
+              fontSize: isMobile ? '1.8rem' : 'clamp(2rem, 4vw, 3rem)',
+              fontWeight: '800',
+              color: '#F5F7FA',
+              marginBottom: '0.5rem'
+            }}>
+              Limited Time Deals
+            </h2>
+            <p style={{
+              fontSize: isMobile ? '1rem' : '1.1rem',
+              color: '#E2E8F0'
+            }}>
+              Don't miss out on these amazing offers!
+            </p>
+          </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: isMobile ? '1.5rem' : '2rem'
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: isMobile ? '1.5rem' : '2rem',
+            marginBottom: isMobile ? '3rem' : '4rem'
           }}>
-            {services.map((service, index) => (
+            {[
+              {
+                title: 'Bulk Order Discount',
+                discount: '20% OFF',
+                description: 'Order 500+ items and save big',
+                icon: '📦',
+                color: '#FF6B9D',
+                badge: 'Popular'
+              },
+              {
+                title: 'First Time Customer',
+                discount: '15% OFF',
+                description: 'Special welcome offer for new clients',
+                icon: '🎁',
+                color: '#4ECDC4',
+                badge: 'New'
+              },
+              {
+                title: 'This Month Special',
+                discount: '10% OFF',
+                description: 'On all business card orders',
+                icon: '⚡',
+                color: '#FFE66D',
+                badge: 'Limited'
+              }
+            ].map((offer, idx) => (
               <div
-                key={index}
+                key={idx}
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                   borderRadius: '25px',
-                  padding: isMobile ? '2rem 1.5rem' : '2.5rem 1.5rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  border: '2px solid rgba(255, 255, 255, 0.1)',
+                  padding: isMobile ? '2rem 1.5rem' : '2.5rem',
                   position: 'relative',
                   overflow: 'hidden',
-                  textAlign: 'center'
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
+                  transition: 'all 0.4s ease',
+                  cursor: 'pointer'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-10px)';
-                  e.currentTarget.style.boxShadow = `0 20px 40px ${service.color}40`;
-                  e.currentTarget.style.borderColor = service.color;
+                  e.currentTarget.style.borderColor = offer.color;
+                  e.currentTarget.style.boxShadow = `0 20px 40px ${offer.color}40`;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
                   e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  style={{
-                    width: isMobile ? '50%' : '60%',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    marginBottom: '1rem',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                />
+                <div style={{
+                  position: 'absolute',
+                  top: '15px',
+                  right: '15px',
+                  background: offer.color,
+                  color: '#0A1A2F',
+                  padding: '0.4rem 0.8rem',
+                  borderRadius: '20px',
+                  fontSize: '0.75rem',
+                  fontWeight: '700'
+                }}>
+                  {offer.badge}
+                </div>
+
+                <div style={{
+                  fontSize: isMobile ? '3rem' : '3.5rem',
+                  marginBottom: '1rem'
+                }}>
+                  {offer.icon}
+                </div>
 
                 <h3 style={{
-                  fontSize: isMobile ? '1.1rem' : '1.2rem',
+                  fontSize: isMobile ? '1.3rem' : '1.5rem',
                   fontWeight: '700',
                   color: '#F5F7FA',
                   marginBottom: '0.5rem'
                 }}>
-                  {service.title}
+                  {offer.title}
                 </h3>
+
                 <div style={{
-                  width: '60px',
-                  height: '4px',
-                  background: service.color,
-                  borderRadius: '2px',
-                  margin: '1rem auto 0'
-                }}></div>
+                  fontSize: isMobile ? '2rem' : '2.5rem',
+                  fontWeight: '800',
+                  background: `linear-gradient(135deg, ${offer.color}, ${offer.color}dd)`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  marginBottom: '1rem'
+                }}>
+                  {offer.discount}
+                </div>
+
+                <p style={{
+                  fontSize: isMobile ? '0.95rem' : '1rem',
+                  color: '#E2E8F0',
+                  lineHeight: '1.6',
+                  marginBottom: '1.5rem'
+                }}>
+                  {offer.description}
+                </p>
+
+                <button
+                  style={{
+                    width: '100%',
+                    padding: '0.9rem 1.5rem',
+                    background: offer.color,
+                    color: '#0A1A2F',
+                    border: 'none',
+                    borderRadius: '50px',
+                    fontSize: '0.95rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.boxShadow = `0 10px 25px ${offer.color}60`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                  onClick={() => scrollToSection('contact')}
+                >
+                  Claim Offer
+                </button>
               </div>
             ))}
           </div>
+
+          {/* Promotional Banner */}
+          <div style={{
+            background: 'linear-gradient(135deg, #1f1c2c, #928dab)',
+            borderRadius: '30px',
+            padding: isMobile ? '2rem 1.5rem' : '3rem',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '400px',
+              height: '400px',
+              background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent)',
+              borderRadius: '50%'
+            }}></div>
+            
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <h3 style={{
+                fontSize: isMobile ? '1.5rem' : '2rem',
+                fontWeight: '800',
+                color: 'white',
+                marginBottom: '1rem'
+              }}>
+                🎊 Seasonal Promotions!
+              </h3>
+              <p style={{
+                fontSize: isMobile ? '1rem' : '1.2rem',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '1.5rem',
+                maxWidth: '700px',
+                margin: '0 auto 1.5rem'
+              }}>
+            Offers Comming Soon !!
+              </p>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(255, 255, 255, 0.2)',
+                padding: '0.8rem 1.5rem',
+                borderRadius: '50px',
+                fontSize: isMobile ? '0.9rem' : '1rem',
+                fontWeight: '600',
+                color: 'white'
+              }}>
+                 <span style={{ fontWeight: '800' }}>Stay Tuned</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" style={{
         padding: isMobile ? '4rem 1.5rem' : '6rem 2rem',
@@ -576,45 +840,6 @@ export default function OutdoorNepal() {
           gap: isMobile ? '3rem' : '5rem',
           alignItems: 'center'
         }}>
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.05)',
-            borderRadius: '40px',
-            padding: isMobile ? '2rem' : '4rem',
-            textAlign: 'center',
-            boxShadow: '0 10px 20px rgba(78, 205, 196, 0.2)'
-          }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(2, 1fr)',
-              gap: isMobile ? '1.5rem' : '2rem'
-            }}>
-              {stats.map((stat, idx) => (
-                <div key={idx} style={{
-                  background: 'rgba(163, 155, 185, 0.3)',
-                  borderRadius: '20px',
-                  padding: isMobile ? '1.5rem 1rem' : '2rem 1rem',
-                  backdropFilter: 'blur(5px)'
-                }}>
-                  <div style={{ fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '0.5rem' }}>{stat.icon}</div>
-                  <div style={{ 
-                    fontSize: isMobile ? '1.5rem' : '2rem', 
-                    fontWeight: '800', 
-                    color: '#F5F7FA', 
-                    marginBottom: '0.3rem' 
-                  }}>
-                    {stat.number}
-                  </div>
-                  <div style={{ 
-                    fontSize: isMobile ? '0.8rem' : '0.9rem', 
-                    color: '#E2E8F0', 
-                    fontWeight: '600' 
-                  }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
             <div style={{
