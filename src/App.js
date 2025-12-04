@@ -1205,61 +1205,6 @@ export default function OutdoorNepal() {
         </div>
       </section>
 
-      {/* Enhanced Gallery Section for Mobile */}
-      <section id="gallery" style={{
-        padding: isMobile ? '3rem 1rem' : '6rem 2rem',
-        background: 'linear-gradient(135deg, #0A1A2F, #23272A)'
-      }}>
-        <div style={{ maxWidth: '1300px', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{
-            display: 'inline-block',
-            padding: '0.5rem 1.2rem',
-            background: 'rgba(255, 230, 109, 0.1)',
-            borderRadius: '25px',
-            color: '#FF6B9D',
-            fontSize: isMobile ? '0.75rem' : '0.9rem',
-            fontWeight: '600',
-            marginBottom: '1rem'
-          }}>
-            🎨 Our Work
-          </div>
-          <h2 style={{
-            fontSize: isMobile ? '1.6rem' : 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: '800',
-            marginBottom: '1rem',
-            color: 'white'
-          }}>Trusted by Leading Brands</h2>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: isMobile ? '1rem' : '2rem',
-            padding: isMobile ? '0 0.5rem' : '0'
-          }}>
-            {icons.map((icon, idx) => (
-              <div
-                key={idx}
-                style={{
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  height: isMobile ? '200px' : '300px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255,255,255,0.1)'
-                }}
-                className="mobile-touch-button"
-              >
-                {icon}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Enhanced Location Section for Mobile */}
       <section id="location" style={{
@@ -1541,8 +1486,275 @@ export default function OutdoorNepal() {
             >
               Send Message
             </button>
-          </form>
+          </form><br></br>
+{/* Footer Section */}
+<footer style={{
+  background: 'linear-gradient(135deg, #0A0E17, #1A1F2C)',
+  padding: isMobile ? '2rem 1rem' : '3rem 2rem',
+  borderTop: '1px solid rgba(255,255,255,0.1)',
+  width: '100%',
+  margin: 0,
+  marginLeft: 0,
+  marginRight: 0,
+  paddingLeft: 0,
+  paddingRight: 0,
+  position: 'absolute',
+  left: 0,
+  right: 0
+}}>
+  <div style={{
+    width: '100%',
+    maxWidth: '1300px',
+    margin: '0 auto',
+    padding: isMobile ? '0 1rem' : '0 2rem'
+  }}>
+    
+    {/* Main Footer Content */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1fr',
+      gap: isMobile ? '2rem' : '3rem',
+      marginBottom: '2rem',
+      textAlign: isMobile ? 'center' : 'left'
+    }}>
+      
+      {/* Brand Info */}
+      <div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.8rem',
+          marginBottom: '1rem',
+          justifyContent: isMobile ? 'center' : 'flex-start'
+        }}>
+          <img src={logoPng} alt="Outdoor Nepal Logo" style={{ 
+            width: '40px', 
+            height: '40px', 
+            objectFit: 'contain' 
+          }} />
+          <div style={{ 
+            fontSize: '1.2rem', 
+            fontWeight: '700', 
+            background: 'linear-gradient(135deg, #FF6B9D, #4ECDC4)', 
+            WebkitBackgroundClip: 'text', 
+            WebkitTextFillColor: 'transparent' 
+          }}>
+            Outdoor Nepal
+          </div>
+        </div>
+        <p style={{
+          color: 'rgba(255,255,255,0.7)',
+          fontSize: '0.9rem',
+          lineHeight: '1.6',
+          marginBottom: '1rem'
+        }}>
+          Your trusted printing partner in Thamel, Kathmandu. Delivering exceptional quality and service since 2005.
+        </p>
+        <div style={{
+          display: 'flex',
+          gap: '0.8rem',
+          justifyContent: isMobile ? 'center' : 'flex-start'
+        }}>
+          {socials.map((social, idx) => (
+            <a
+              key={idx}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                width: '40px',
+                height: '40px',
+                background: 'rgba(255,255,255,0.1)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+                border: '1px solid rgba(255,255,255,0.2)'
+              }}
+              className="mobile-touch-button"
+            >
+              <img 
+                src={social.icon} 
+                alt="social icon"
+                style={{
+                  width: '18px',
+                  height: '18px',
+                  objectFit: 'contain'
+                }}
+              />
+            </a>
+          ))}
+        </div>
+      </div>
 
+      {/* Quick Links */}
+      <div>
+        <h3 style={{
+          color: 'white',
+          fontSize: '1.1rem',
+          fontWeight: '600',
+          marginBottom: '1.2rem',
+          textAlign: isMobile ? 'center' : 'left'
+        }}>
+          Quick Links
+        </h3>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.7rem'
+        }}>
+          {['Home', 'Services', 'About', 'Gallery', 'Location', 'Contact'].map((item, idx) => (
+            <a
+              key={item}
+              href="#"
+              onClick={(e) => { 
+                e.preventDefault(); 
+                scrollToSection(['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx]); 
+              }}
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                transition: 'all 0.3s ease',
+                textAlign: isMobile ? 'center' : 'left'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#FF6B9D'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.7)'}
+              className="mobile-touch-button"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Info */}
+      <div>
+        <h3 style={{
+          color: 'white',
+          fontSize: '1.1rem',
+          fontWeight: '600',
+          marginBottom: '1.2rem',
+          textAlign: isMobile ? 'center' : 'left'
+        }}>
+          Contact Info
+        </h3>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.8rem'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.8rem',
+            justifyContent: isMobile ? 'center' : 'flex-start'
+          }}>
+            <div style={{
+              width: '30px',
+              height: '30px',
+              background: 'rgba(255,107,157,0.2)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.8rem'
+            }}>
+              📍
+            </div>
+            <div style={{
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: '0.9rem'
+            }}>
+              Thamel, Kathmandu, Nepal
+            </div>
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.8rem',
+            justifyContent: isMobile ? 'center' : 'flex-start'
+          }}>
+            <div style={{
+              width: '30px',
+              height: '30px',
+              background: 'rgba(78,205,196,0.2)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.8rem'
+            }}>
+              📞
+            </div>
+            <a 
+              href="tel:+9779841503408"
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#4ECDC4'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255,255,255,0.7)'}
+            >
+              +977 9841503408
+            </a>
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.8rem',
+            justifyContent: isMobile ? 'center' : 'flex-start'
+          }}>
+            <div style={{
+              width: '30px',
+              height: '30px',
+              background: 'rgba(253,203,110,0.2)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.8rem'
+            }}>
+              ⏰
+            </div>
+            <div style={{
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: '0.9rem'
+            }}>
+              9:00 AM - 7:00 PM
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Copyright Section */}
+    <div style={{
+      borderTop: '1px solid rgba(255,255,255,0.1)',
+      paddingTop: '2rem',
+      textAlign: 'center'
+    }}>
+      <p style={{
+        color: 'rgba(255,255,255,0.6)',
+        fontSize: '0.85rem',
+        marginBottom: '0.5rem'
+      }}>
+        © {new Date().getFullYear()} Outdoor Nepal. All rights reserved.
+      </p>
+      <p style={{
+        color: 'rgba(255,255,255,0.5)',
+        fontSize: '0.8rem'
+      }}>
+      </p>
+    </div>
+  </div>
+</footer>
           {/* Quick Contact Info for Mobile */}
           {isMobile && (
             <div style={{
@@ -1626,5 +1838,7 @@ export default function OutdoorNepal() {
         </button>
       )}
     </div>
+    
   );
+  
 }
