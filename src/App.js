@@ -67,7 +67,7 @@ const handleTouchStart = (e) => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
       
-      const sections = ['hero', 'services', 'about', 'gallery', 'location', 'contact'];
+      const sections = ['hero', 'services', 'about', 'location', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -304,16 +304,16 @@ const handleTouchStart = (e) => {
           {/* Desktop Menu */}
           {!isMobile && (
             <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-              {['Home', 'Services', 'About', 'Gallery', 'Location', 'Contact'].map((item, idx) => (
+              {['Home', 'Services', 'About', 'Location', 'Contact'].map((item, idx) => (
                 <a
                   key={item}
                   href="#"
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    scrollToSection(['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx]); 
+                    scrollToSection(['hero', 'services', 'about', 'location', 'contact'][idx]); 
                   }}
                   style={{
-                    color: activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0',
+                    color: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0',
                     textDecoration: 'none',
                     fontSize: '0.95rem',
                     fontWeight: '600',
@@ -322,10 +322,10 @@ const handleTouchStart = (e) => {
                     padding: '0.5rem 0'
                   }}
                   onMouseEnter={(e) => e.target.style.color = '#FF6B9D'}
-                  onMouseLeave={(e) => e.target.style.color = activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0'}
+                  onMouseLeave={(e) => e.target.style.color = activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0'}
                 >
                   {item}
-                  {activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] && (
+                  {activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] && (
                     <div style={{
                       position: 'absolute',
                       bottom: 0,
@@ -396,25 +396,25 @@ const handleTouchStart = (e) => {
               flexDirection: 'column',
               gap: '0.5rem'
             }}>
-              {['Home', 'Services', 'About', 'Gallery', 'Location', 'Contact'].map((item, idx) => (
+              {['Home', 'Services', 'About', 'Location', 'Contact'].map((item, idx) => (
                 <a
                   key={item}
                   href="#"
                   onClick={(e) => { 
                     e.preventDefault(); 
-                    scrollToSection(['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx]); 
+                    scrollToSection(['hero', 'services', 'about', 'location', 'contact'][idx]); 
                   }}
                   style={{
                     display: 'block',
-                    color: activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0',
+                    color: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0',
                     textDecoration: 'none',
                     fontSize: '1.2rem',
                     fontWeight: '600',
                     padding: '1.2rem 1rem',
                     borderRadius: '12px',
-                    background: activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] ? 
+                    background: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? 
                                'rgba(255, 107, 157, 0.1)' : 'transparent',
-                    border: activeSection === ['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx] ?
+                    border: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ?
                            '1px solid rgba(255, 107, 157, 0.3)' : '1px solid transparent',
                     transition: 'all 0.3s ease',
                     textAlign: 'center'
@@ -1645,13 +1645,13 @@ const handleTouchStart = (e) => {
           flexDirection: 'column',
           gap: '0.7rem'
         }}>
-          {['Home', 'Services', 'About', 'Gallery', 'Location', 'Contact'].map((item, idx) => (
+          {['Home', 'Services', 'About', 'Location', 'Contact'].map((item, idx) => (
             <a
               key={item}
               href="#"
               onClick={(e) => { 
                 e.preventDefault(); 
-                scrollToSection(['hero', 'services', 'about', 'gallery', 'location', 'contact'][idx]); 
+                scrollToSection(['hero', 'services', 'about','location', 'contact'][idx]); 
               }}
               style={{
                 color: 'rgba(255,255,255,0.7)',
