@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,6 +25,7 @@ import boardImg from './images/board.jpeg';
 import bannerImg from './images/banner.jpeg';
 import tokenImg from './images/token.jpeg';
 import envelopeImg from './images/envelope.jpeg';
+import emailjs from '@emailjs/browser';
 
 export default function OutdoorNepal() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +33,29 @@ export default function OutdoorNepal() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [touchStart, setTouchStart] = useState(null);
+const form = useRef();
+ const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+    form.current,
+    { publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY }
+  )
+  .then(() => {
+    alert("Message sent!");
+    form.current.reset();
+  })
+  .catch((error) => {
+    alert("Failed to send message");
+    console.error(error);
+    
+  });
+};
+const handleTouchStart = (e) => {
+  setTouchStart(e.touches[0].clientX);
+};
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,10 +77,6 @@ export default function OutdoorNepal() {
         return false;
       });
       if (current) setActiveSection(current);
-    };
-
-    const handleTouchStart = (e) => {
-      setTouchStart(e.touches[0].clientX);
     };
 
     const handleTouchMove = (e) => {
@@ -1355,138 +1375,158 @@ export default function OutdoorNepal() {
           </div>
 
           {/* Enhanced Contact Form */}
-          <form style={{ 
-            maxWidth: '500px', 
-            margin: '0 auto',
-            textAlign: 'left'
-          }}>
-            <div style={{ marginBottom: '1rem' }}>
-              <label style={{ 
-                display: 'block', 
-                marginBottom: '0.5rem', 
-                color: 'white',
-                fontSize: isMobile ? '0.9rem' : '1rem',
-                fontWeight: '600'
-              }}>
-                Name
-              </label>
-              <input 
-                type="text" 
-                placeholder="Your name" 
-                style={{
-                  width: '100%',
-                  padding: isMobile ? '0.9rem' : '1rem',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  outline: 'none',
-                  fontSize: isMobile ? '0.9rem' : '1rem',
-                  background: 'rgba(255,255,255,0.1)',
-                  color: 'white',
-                  transition: 'all 0.3s ease'
-                }}
-                onFocus={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.15)';
-                  e.target.style.borderColor = '#FF6B9D';
-                }}
-                onBlur={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.1)';
-                  e.target.style.borderColor = 'rgba(255,255,255,0.2)';
-                }}
-              />
-            </div>
+           <form
+      ref={form}
+      onSubmit={sendEmail}
+      style={{
+        maxWidth: "500px",
+        margin: "0 auto",
+        textAlign: "left",
+      }}
+    >
+      {/* Name */}
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          style={{
+            display: "block",
+            marginBottom: "0.5rem",
+            color: "white",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            fontWeight: "600",
+          }}
+        >
+          Name
+        </label>
 
-            <div style={{ marginBottom: '1rem' }}>
-              <label style={{ 
-                display: 'block', 
-                marginBottom: '0.5rem', 
-                color: 'white',
-                fontSize: isMobile ? '0.9rem' : '1rem',
-                fontWeight: '600'
-              }}>
-                Email
-              </label>
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                style={{
-                  width: '100%',
-                  padding: isMobile ? '0.9rem' : '1rem',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  outline: 'none',
-                  fontSize: isMobile ? '0.9rem' : '1rem',
-                  background: 'rgba(255,255,255,0.1)',
-                  color: 'white',
-                  transition: 'all 0.3s ease'
-                }}
-                onFocus={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.15)';
-                  e.target.style.borderColor = '#FF6B9D';
-                }}
-                onBlur={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.1)';
-                  e.target.style.borderColor = 'rgba(255,255,255,0.2)';
-                }}
-              />
-            </div>
+        <input
+          type="text"
+          name="user_name" // IMPORTANT for EmailJS
+          placeholder="Your name"
+          style={{
+            width: "100%",
+            padding: isMobile ? "0.9rem" : "1rem",
+            borderRadius: "12px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            outline: "none",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            background: "rgba(255,255,255,0.1)",
+            color: "white",
+            transition: "all 0.3s ease",
+          }}
+          onFocus={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.15)";
+            e.target.style.borderColor = "#FF6B9D";
+          }}
+          onBlur={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.1)";
+            e.target.style.borderColor = "rgba(255,255,255,0.2)";
+          }}
+        />
+      </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <label style={{ 
-                display: 'block', 
-                marginBottom: '0.5rem', 
-                color: 'white',
-                fontSize: isMobile ? '0.9rem' : '1rem',
-                fontWeight: '600'
-              }}>
-                Message
-              </label>
-              <textarea 
-                placeholder="Your message" 
-                rows={isMobile ? "4" : "5"}
-                style={{
-                  width: '100%',
-                  padding: isMobile ? '0.9rem' : '1rem',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  outline: 'none',
-                  resize: 'vertical',
-                  fontSize: isMobile ? '0.9rem' : '1rem',
-                  background: 'rgba(255,255,255,0.1)',
-                  color: 'white',
-                  transition: 'all 0.3s ease',
-                  minHeight: '120px'
-                }}
-                onFocus={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.15)';
-                  e.target.style.borderColor = '#FF6B9D';
-                }}
-                onBlur={(e) => {
-                  e.target.style.background = 'rgba(255,255,255,0.1)';
-                  e.target.style.borderColor = 'rgba(255,255,255,0.2)';
-                }}
-              ></textarea>
-            </div>
+      {/* Email */}
+      <div style={{ marginBottom: "1rem" }}>
+        <label
+          style={{
+            display: "block",
+            marginBottom: "0.5rem",
+            color: "white",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            fontWeight: "600",
+          }}
+        >
+          Email
+        </label>
 
-            <button 
-              type="submit" 
-              style={{
-                width: '100%',
-                padding: isMobile ? '1rem' : '1.2rem',
-                background: 'linear-gradient(135deg, #FF6B9D, #4ECDC4)',
-                color: 'white',
-                fontWeight: '600',
-                border: 'none',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                fontSize: isMobile ? '0.9rem' : '1rem',
-                boxShadow: '0 8px 25px rgba(255, 107, 157, 0.3)'
-              }}
-              className="mobile-touch-button"
-            >
-              Send Message
-            </button>
-          </form><br></br>
+        <input
+          type="email"
+          name="user_email" // IMPORTANT for EmailJS
+          placeholder="Your email"
+          style={{
+            width: "100%",
+            padding: isMobile ? "0.9rem" : "1rem",
+            borderRadius: "12px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            outline: "none",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            background: "rgba(255,255,255,0.1)",
+            color: "white",
+            transition: "all 0.3s ease",
+          }}
+          onFocus={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.15)";
+            e.target.style.borderColor = "#FF6B9D";
+          }}
+          onBlur={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.1)";
+            e.target.style.borderColor = "rgba(255,255,255,0.2)";
+          }}
+        />
+      </div>
+
+      {/* Message */}
+      <div style={{ marginBottom: "1.5rem" }}>
+        <label
+          style={{
+            display: "block",
+            marginBottom: "0.5rem",
+            color: "white",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            fontWeight: "600",
+          }}
+        >
+          Message
+        </label>
+
+        <textarea
+          name="message" // IMPORTANT for EmailJS
+          placeholder="Your message"
+          rows={isMobile ? "4" : "5"}
+          style={{
+            width: "100%",
+            padding: isMobile ? "0.9rem" : "1rem",
+            borderRadius: "12px",
+            border: "1px solid rgba(255,255,255,0.2)",
+            outline: "none",
+            resize: "vertical",
+            fontSize: isMobile ? "0.9rem" : "1rem",
+            background: "rgba(255,255,255,0.1)",
+            color: "white",
+            transition: "all 0.3s ease",
+            minHeight: "120px",
+          }}
+          onFocus={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.15)";
+            e.target.style.borderColor = "#FF6B9D";
+          }}
+          onBlur={(e) => {
+            e.target.style.background = "rgba(255,255,255,0.1)";
+            e.target.style.borderColor = "rgba(255,255,255,0.2)";
+          }}
+        ></textarea>
+      </div>
+
+      {/* Button */}
+      <button
+        type="submit"
+        style={{
+          width: "100%",
+          padding: isMobile ? "1rem" : "1.2rem",
+          background: "linear-gradient(135deg, #FF6B9D, #4ECDC4)",
+          color: "white",
+          fontWeight: "600",
+          border: "none",
+          borderRadius: "25px",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          fontSize: isMobile ? "0.9rem" : "1rem",
+          boxShadow: "0 8px 25px rgba(255, 107, 157, 0.3)",
+        }}
+        className="mobile-touch-button"
+      >
+        Send Message
+      </button>
+    </form> <br></br>
 {/* Footer Section */}
 <footer style={{
   background: 'linear-gradient(135deg, #0A0E17, #1A1F2C)',
