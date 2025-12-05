@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/outdoornepal/static/css/main.5ec19715.css",
-    "main.js": "/outdoornepal/static/js/main.87cdc427.js",
+    "main.js": "/outdoornepal/static/js/main.a60c4fc3.js",
     "static/js/453.d671d4d8.chunk.js": "/outdoornepal/static/js/453.d671d4d8.chunk.js",
     "static/media/digital-printing.jpg": "/outdoornepal/static/media/digital-printing.67f6bdcfe5f8e9cccd68.jpg",
     "static/media/menu.jpeg": "/outdoornepal/static/media/menu.0ad0abf03cb2ca7bd100.jpeg",
@@ -28,11 +28,11 @@
     "static/media/slick.woff": "/outdoornepal/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/outdoornepal/index.html",
     "main.5ec19715.css.map": "/outdoornepal/static/css/main.5ec19715.css.map",
-    "main.87cdc427.js.map": "/outdoornepal/static/js/main.87cdc427.js.map",
+    "main.a60c4fc3.js.map": "/outdoornepal/static/js/main.a60c4fc3.js.map",
     "453.d671d4d8.chunk.js.map": "/outdoornepal/static/js/453.d671d4d8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ec19715.css",
-    "static/js/main.87cdc427.js"
+    "static/js/main.a60c4fc3.js"
   ]
 }
