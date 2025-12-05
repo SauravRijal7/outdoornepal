@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/outdoornepal/static/css/main.5ec19715.css",
+    "main.js": "/outdoornepal/static/js/main.87cdc427.js",
+    "static/js/453.d671d4d8.chunk.js": "/outdoornepal/static/js/453.d671d4d8.chunk.js",
+    "static/media/digital-printing.jpg": "/outdoornepal/static/media/digital-printing.67f6bdcfe5f8e9cccd68.jpg",
+    "static/media/menu.jpeg": "/outdoornepal/static/media/menu.0ad0abf03cb2ca7bd100.jpeg",
+    "static/media/token.jpeg": "/outdoornepal/static/media/token.e531b71552c8d7454994.jpeg",
+    "static/media/pocketmap.jpeg": "/outdoornepal/static/media/pocketmap.3d5b198e8f32d89926c7.jpeg",
+    "static/media/marriage.jpeg": "/outdoornepal/static/media/marriage.1f58bf359409c888f800.jpeg",
+    "static/media/citymap.jpeg": "/outdoornepal/static/media/citymap.48a064eb9403f9bb69c6.jpeg",
+    "static/media/stamp.jpeg": "/outdoornepal/static/media/stamp.7921b7b1a7566a82758b.jpeg",
+    "static/media/logo.png": "/outdoornepal/static/media/logo.ee766685c83925e12591.png",
+    "static/media/medal.jpeg": "/outdoornepal/static/media/medal.0cac480e362f480707c0.jpeg",
+    "static/media/card.jpg": "/outdoornepal/static/media/card.04f466ca2472cb811b84.jpg",
+    "static/media/back.jpg": "/outdoornepal/static/media/back.38f4c78d9925790b43bb.jpg",
+    "static/media/booking.jpeg": "/outdoornepal/static/media/booking.0895b3f161f4acf937c8.jpeg",
+    "static/media/idcard.jpeg": "/outdoornepal/static/media/idcard.671502b6537e3870c60d.jpeg",
+    "static/media/banner.jpeg": "/outdoornepal/static/media/banner.0686932a1ea8b0fd3816.jpeg",
+    "static/media/envelope.jpeg": "/outdoornepal/static/media/envelope.372dc6fd58cda137fb4a.jpeg",
+    "static/media/board.jpeg": "/outdoornepal/static/media/board.3080f439a738ecd9b09d.jpeg",
+    "static/media/letterhead.jpeg": "/outdoornepal/static/media/letterhead.c6e9e51c6d38f9df1736.jpeg",
+    "static/media/design.jpg": "/outdoornepal/static/media/design.fab33436bef8b69a1ede.jpg",
+    "static/media/whatsapp.png": "/outdoornepal/static/media/whatsapp.a74cc1483d2ff38b3514.png",
+    "static/media/slick.svg": "/outdoornepal/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/outdoornepal/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/outdoornepal/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/outdoornepal/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/outdoornepal/index.html",
+    "main.5ec19715.css.map": "/outdoornepal/static/css/main.5ec19715.css.map",
+    "main.87cdc427.js.map": "/outdoornepal/static/js/main.87cdc427.js.map",
+    "453.d671d4d8.chunk.js.map": "/outdoornepal/static/js/453.d671d4d8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ec19715.css",
+    "static/js/main.87cdc427.js"
+  ]
+}
