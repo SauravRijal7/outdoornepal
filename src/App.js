@@ -3,28 +3,26 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './styles.css';
-import backImg from './images/back.jpg';
 import cardImg from './images/card.jpg';
-import digitalPrintingImg from './images/digital-printing.jpg';
 import facebookImg from './images/facebook.png';
 import instagramImg from './images/instagram.png';
 import logoPng from './images/logo.png';
 import viberImg from './images/viber.png';
 import whatsappImg from './images/whatsapp.png';
 import designImg from './images/design.jpg';
-import stampImg from './images/stamp.jpeg';
-import citymapImg from './images/citymap.jpeg';
-import medalImg from './images/medal.jpeg';
-import idcardImg from './images/idcard.jpeg';
-import marriageImg from './images/marriage.jpeg';
-import letterheadImg from './images/letterhead.jpeg';
-import menuImg from './images/menu.jpeg';
-import bookingImg from './images/booking.jpeg';
-import pocketmapImg from './images/pocketmap.jpeg';
-import boardImg from './images/board.jpeg';
-import bannerImg from './images/banner.jpeg';
-import tokenImg from './images/token.jpeg';
-import envelopeImg from './images/envelope.jpeg';
+import stampImg from './images/stamp.jpg';
+import citymapImg from './images/citymap.jpg';
+import medalImg from './images/medal.jpg';
+import idcardImg from './images/idcard.jpg';
+import marriageImg from './images/marriage.jpg';
+import letterheadImg from './images/letterhead.jpg';
+import menuImg from './images/menu.jpg';
+import bookingImg from './images/booking.jpg';
+import pocketmapImg from './images/pocketmap.jpg';
+import boardImg from './images/board.jpg';
+import bannerImg from './images/banner.jpg';
+import tokenImg from './images/token.jpg';
+import envelopeImg from './images/envelope.jpg';
 import emailjs from '@emailjs/browser';
 
 export default function OutdoorNepal() {
@@ -124,7 +122,6 @@ const handleTouchStart = (e) => {
 
   const services = [
     { icon: cardImg, title: "Business Cards", color: "#FF6B9D" },
-    { icon: digitalPrintingImg, title: "Digital Printing", color: "#4ECDC4" },
     { icon: citymapImg, title: "City Map", color: "#FF6B9D" },
     { icon: medalImg, title: "Medal Printing", color: "#4ECDC4" },
     { icon: idcardImg, title: "ID Cards", color: "#A29BFE" },
