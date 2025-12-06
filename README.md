@@ -15,5 +15,5 @@ Outdoor Nepal Printing provides high-quality printing services for businesses an
 
 - **Frontend:** React.js  
 - **Styling:** Tailwind CSS / Custom CSS  
-- **Hosting:** GitHub Pages / Vercel  
+- **Hosting:** GitHub Pages 
 - **Email Integration:** EmailJS for contact forms  
