@@ -339,132 +339,169 @@ const handleTouchStart = (e) => {
           )}
 
           {/* Enhanced Mobile Hamburger */}
-          {isMobile && (
-            <div
-              onClick={() => setMenuOpen(!menuOpen)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-                cursor: 'pointer',
-                zIndex: 1001,
-                padding: '8px',
-                borderRadius: '8px',
-                background: menuOpen ? 'rgba(255,255,255,0.1)' : 'transparent',
-                transition: 'all 0.3s ease'
-              }}
-              className="mobile-touch-button"
-            >
-              {[0, 1, 2].map(i => (
-                <div key={i} style={{
-                  width: '22px',
-                  height: '2px',
-                  background: 'linear-gradient(135deg, #FF6B9D, #4ECDC4)',
-                  borderRadius: '2px',
-                  transition: 'all 0.3s ease',
-                  transform: menuOpen && i === 0 ? 'rotate(45deg) translate(5px, 5px)' : 
-                            menuOpen && i === 2 ? 'rotate(-45deg) translate(5px, -5px)' : 'none',
-                  opacity: menuOpen && i === 1 ? 0 : 1
-                }}></div>
-              ))}
-            </div>
-          )}
-        </div>
+    {/* Mobile Hamburger */}
+{isMobile && (
+  <div
+    onClick={() => setMenuOpen(!menuOpen)}
+    style={{
+      width: '44px',
+      height: '44px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '5px',
+      cursor: 'pointer',
+      zIndex: 1001,
+      padding: 0,
+      flexShrink: 0,
+      borderRadius: '8px',
+      background: menuOpen
+        ? 'rgba(255,255,255,0.1)'
+        : 'transparent',
+      transition: 'all 0.3s ease'
+    }}
+    className="mobile-touch-button"
+  >
+    {[0, 1, 2].map(i => (
+      <div
+        key={i}
+        style={{
+          width: '22px',
+          height: '2px',
+          background: 'linear-gradient(135deg, #FF6B9D, #4ECDC4)',
+          borderRadius: '2px',
+          transition: 'all 0.3s ease',
+          transform:
+            menuOpen && i === 0
+              ? 'rotate(45deg) translate(5px, 5px)'
+              : menuOpen && i === 2
+              ? 'rotate(-45deg) translate(5px, -5px)'
+              : 'none',
+          opacity: menuOpen && i === 1 ? 0 : 1
+        }}
+      />
+    ))}
+  </div>
+)}
 
-        {/* Enhanced Mobile Menu */}
-        {menuOpen && isMobile && (
-          <div style={{
-            position: 'fixed',
-            top: '60px',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(10, 26, 47, 0.98), rgba(35, 39, 42, 0.98))',
-            padding: '2rem 1.5rem',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-            animation: 'slideInRight 0.3s ease',
-            overflowY: 'auto',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            zIndex: 999
-          }}>
-            <div style={{
+{/* Mobile Menu */}
+{menuOpen && isMobile && (
+  <div
+    style={{
+      position: 'fixed',
+      top: '60px',
+      left: 0,
+      right: 0,
+      height: 'calc(100vh - 60px)',
+      maxHeight: 'calc(100vh - 60px)',
+      background:
+        'linear-gradient(135deg, rgba(10, 26, 47, 0.98), rgba(35, 39, 42, 0.98))',
+      padding: '1.5rem',
+      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+      animation: 'slideInRight 0.3s ease',
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      zIndex: 999
+    }}
+  >
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem'
+      }}
+    >
+      {['Home', 'Services', 'About', 'Location', 'Contact'].map(
+        (item, idx) => (
+          <a
+            key={item}
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(
+                ['hero', 'services', 'about', 'location', 'contact'][idx]
+              );
+            }}
+            style={{
+              display: 'block',
+              color:
+                activeSection ===
+                ['hero', 'services', 'about', 'location', 'contact'][idx]
+                  ? '#FF6B9D'
+                  : '#E2E8F0',
+              textDecoration: 'none',
+              fontSize: '1.1rem',
+              fontWeight: '600',
+              padding: '1rem',
+              borderRadius: '12px',
+              background:
+                activeSection ===
+                ['hero', 'services', 'about', 'location', 'contact'][idx]
+                  ? 'rgba(255, 107, 157, 0.1)'
+                  : 'transparent',
+              border:
+                activeSection ===
+                ['hero', 'services', 'about', 'location', 'contact'][idx]
+                  ? '1px solid rgba(255, 107, 157, 0.3)'
+                  : '1px solid transparent',
+              transition: 'all 0.3s ease',
+              textAlign: 'center'
+            }}
+            className="mobile-touch-button"
+          >
+            {item}
+          </a>
+        )
+      )}
+
+      {/* Social Links */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '1rem',
+          marginTop: '1.5rem',
+          paddingTop: '1.5rem',
+          borderTop: '1px solid rgba(255,255,255,0.1)'
+        }}
+      >
+        {socials.map((social, idx) => (
+          <a
+            key={idx}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              width: '50px',
+              height: '50px',
+              background: 'rgba(255,255,255,0.1)',
+              borderRadius: '50%',
               display: 'flex',
-              flexDirection: 'column',
-              gap: '0.5rem'
-            }}>
-              {['Home', 'Services', 'About', 'Location', 'Contact'].map((item, idx) => (
-                <a
-                  key={item}
-                  href="#"
-                  onClick={(e) => { 
-                    e.preventDefault(); 
-                    scrollToSection(['hero', 'services', 'about', 'location', 'contact'][idx]); 
-                  }}
-                  style={{
-                    display: 'block',
-                    color: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? '#FF6B9D' : '#E2E8F0',
-                    textDecoration: 'none',
-                    fontSize: '1.2rem',
-                    fontWeight: '600',
-                    padding: '1.2rem 1rem',
-                    borderRadius: '12px',
-                    background: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ? 
-                               'rgba(255, 107, 157, 0.1)' : 'transparent',
-                    border: activeSection === ['hero', 'services', 'about', 'location', 'contact'][idx] ?
-                           '1px solid rgba(255, 107, 157, 0.3)' : '1px solid transparent',
-                    transition: 'all 0.3s ease',
-                    textAlign: 'center'
-                  }}
-                  className="mobile-touch-button"
-                >
-                  {item}
-                </a>
-              ))}
-              
-              {/* Social links in mobile menu */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '1rem',
-                marginTop: '2rem',
-                paddingTop: '2rem',
-                borderTop: '1px solid rgba(255,255,255,0.1)'
-              }}>
-                {socials.map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      width: '50px',
-                      height: '50px',
-                      background: 'rgba(255,255,255,0.1)',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease'
-                    }}
-                    className="mobile-touch-button"
-                  >
-                    <img 
-                      src={social.icon} 
-                      alt="social icon"
-                      style={{
-                        width: '24px',
-                        height: '24px',
-                        objectFit: 'contain'
-                      }}
-                    />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease'
+            }}
+            className="mobile-touch-button"
+          >
+            <img
+              src={social.icon}
+              alt="social icon"
+              style={{
+                width: '24px',
+                height: '24px',
+                objectFit: 'contain'
+              }}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
       </nav>
 
       {/* Enhanced Hero Section for Mobile */}
